@@ -77,14 +77,47 @@
     header, main {
       padding: 1rem;
     }
-    .product-card, .news-wall, .search-container {
+    .product-card, .news-wall, .search-container ,.carousel-container{
       background: white;
       margin: 1rem auto;
       padding: 1rem;
       border-radius: 8px;
       max-width: 600px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: black;
+      display: block;
     }
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel-container img {
+      transition: opacity 1s ease-in-out;
+      border-radius: 8px;
+    }
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+    }
+
+    .carousel-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 350px;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-container img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
     .news-wall ul {
       padding-left: 1rem;
     }
@@ -94,6 +127,36 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+    /*影片嵌入*/
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        padding: 2rem;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .video-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .video-card h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .video-card iframe {
+        max-width: 100%;
+        height: 315px;
+        border: none;
+      }
     /*換頁功能*/
     body {
       font-family: 'Noto Sans TC', sans-serif;
@@ -109,7 +172,7 @@
       margin: 1rem auto;
       padding: 1rem;
       border-radius: 8px;
-      max-width: 600px;
+      max-width: 1200px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-decoration: none;
       color: black;
@@ -123,6 +186,16 @@
     .product-card h3 {
       margin: 0.5rem 0;
     }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+    }
+    .news-wall{
+      width:1200px;
+    }
+
+
     .news-wall ul {
       padding-left: 1rem;
     }
@@ -149,6 +222,77 @@
       background-color: #ccc;
       cursor: default;
     }
-    
 
+    /*動畫製作*/
+
+    .carousel-item {
+      display: none;
+      width: 100%;
+      height: 200%;
+    }
+
+    .carousel-item.active {
+      display: block;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 200%;
+      object-fit: contain;
+    }
+    /*動畫製作(曾行)*/
+
+    * {
+      box-sizing: border-box;
+    }
+    .carousel {
+      width: 350px;
+      height: 600px;
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      animation: slide 15s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: auto;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33.33% { transform: translateX(-100%); }
+      66.66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
+    }
+    /*最近消息*/
+    .news-section {
+      width: 350%;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-align: center;
+    }
+
+    .news-section h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .news-section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .news-section li {
+      margin-bottom: 10px;
+    }
 </style>
